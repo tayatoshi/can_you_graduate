@@ -19,9 +19,6 @@ conki = data[data['評語']=='？']
 sum_tanni = sum_tanni.dropna(axis=1)
 sum_tanni.columns = ['科目名称','合計単位']
 data = sum_tanni
-# data = data[data['取得学年']==False][['科目名称','履修学期']].rename(columns ={'履修学期':'合計単位'})
-# data['合計単位'] = sum_tanni['合計単位']
-# data['科目名称'] = sum_tanni['科目名称']
 concat_data = pd.concat([data,conki[['科目名称','単位']]]).sort_index().reset_index(drop=True).fillna(False)
 
 for i in data['合計単位'].index:
@@ -66,16 +63,15 @@ def tanni(trace=False):
             adj_sum = adj_sum - too
 
     if trace == True:
-        print('                ')
+        print()
         print('自由科目：{}'.format(free))
         print('他学部等設置科目：{}'.format(tagakubu))
         print('特設科目：{}'.format(tokusetu))
-        #print('基盤科目：{}'.format(kibann))
         print('先端科目：{}'.format(sentan))
         print('研究会：{}'.format(zemi))
         print('卒業プロジェクト：{}'.format(sotupro))
         print('要件単位：{}'.format(adj_sum))
-        print('                ')
+        print()
 
     return {'adj_sum':adj_sum, 'sentan':sentan,'sotupro':sotupro,'zemi':zemi}
 
