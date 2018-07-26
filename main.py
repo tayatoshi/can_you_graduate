@@ -6,7 +6,7 @@
 ・ただし賛辞と優しいコードレビューはお受けいたします
 '''
 
-import pandas as pd
+import pandas as pd# pandas==0.21.0
 import warnings
 warnings.filterwarnings('ignore')
 
