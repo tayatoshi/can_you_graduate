@@ -10,9 +10,9 @@ import pandas as pd# pandas==0.21.0
 import warnings
 warnings.filterwarnings('ignore')
 
-print('成績のcsvファイル名を入力:',end='')
-file_name = str(input())
-data = pd.read_csv(file_name)
+# print('成績のcsvファイル名を入力:',end='')
+# file_name = str(input())
+data = pd.read_csv('index.csv')
 sum_tanni = data[data.isnull().sum(axis=1)==6]
 data = data.fillna(False)
 conki = data[data['評語']=='？']
@@ -95,6 +95,7 @@ def for_grad(result,konki=False):
     if result['sotupro'] == 2:
         sotupro1_result = True
     if result['sotupro'] == 4:
+        sotupro1_result = True
         sotupro2_result = True
 
     print('========14学則卒業要件========')
@@ -120,6 +121,7 @@ def for_grad(result,konki=False):
         if result['sotupro'] + K['sotupro'] == 2:
             sotupro1_result = True
         if result['sotupro'] + K['sotupro'] == 4:
+            sotupro1_result = True
             sotupro2_result = True
         print('                ')
         print('今期全ての単位が取れた場合')
